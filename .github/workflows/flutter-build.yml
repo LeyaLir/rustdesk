@@ -414,7 +414,7 @@ jobs:
 
   build-for-macOS-arm64-selfhost:
     # use build-for-macOS instead
-    if: ${{ inputs.macos-build }} && ${{ inputs.selfhost }}
+    if: ${{ inputs.selfhost }}
     runs-on: [self-hosted, macOS, ARM64]
     needs: [generate-bridge]
     steps:
@@ -594,7 +594,7 @@ jobs:
       #       flutter/build/ios/ipa/*.ipa
 
   build-rustdesk-ios-selfhost:
-    if: ${{ inputs.ios-build }} && ${{ inputs.selfhost }}
+    if: ${{ inputs.selfhost }}
     runs-on: [self-hosted, macOS, ARM64]
     needs: [generate-bridge]
     strategy:
