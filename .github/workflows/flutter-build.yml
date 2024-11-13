@@ -652,6 +652,7 @@ jobs:
     if: ${{ inputs.macos-build }}
     name: ${{ matrix.job.target }}
     runs-on: ${{ matrix.job.os }}
+    needs: [generate-bridge]
     strategy:
       fail-fast: false
       matrix:
