@@ -411,7 +411,7 @@ jobs:
 
   build-for-macOS-arm64-selfhost:
     # use build-for-macOS instead
-    if: ${{ inputs.macos-build }} == 'true' && ${{ inputs.selfhost }} == 'true'
+    if: ${{ inputs.macos-build }}
     runs-on: [self-hosted, macOS, ARM64]
     needs: [generate-bridge]
     steps:
@@ -482,7 +482,7 @@ jobs:
             rustdesk*-aarch64.dmg
 
   build-rustdesk-ios:
-    if: ${{ inputs.ios-build }} == 'true' && ${{ inputs.upload-artifact }} == 'true'
+    if: ${{ inputs.ios-build }}
     name: build rustdesk ios ipa
     runs-on: ${{ matrix.job.os }}
     needs: [generate-bridge]
@@ -590,7 +590,7 @@ jobs:
       #       flutter/build/ios/ipa/*.ipa
 
   build-rustdesk-ios-selfhost:
-    if: ${{ inputs.ios-build }} == 'true' && ${{ inputs.selfhost }} == 'true'
+    if: ${{ inputs.ios-build }}
     runs-on: [self-hosted, macOS, ARM64]
     needs: [generate-bridge]
     strategy:
@@ -1169,7 +1169,7 @@ jobs:
   build-rustdesk-android-universal:
     needs: [build-rustdesk-android]
     name: build rustdesk android universal apk
-    if: ${{ inputs.android-build }} == 'true' && ${{ inputs.upload-artifact }} == 'true'
+    if: ${{ inputs.android-build }}
     runs-on: ubuntu-20.04
     env:
       reltype: release
@@ -1686,7 +1686,7 @@ jobs:
             res/rustdesk-${{ env.VERSION }}*.zst
 
   build-rustdesk-linux-sciter:
-    if: ${{ inputs.linux-build }} == 'true' && ${{ inputs.upload-artifact }} == 'true'
+    if: ${{ inputs.linux-build }}
     needs: build-rustdesk-linux # not for dep, just make it run later for parallelism
     runs-on: ${{ matrix.job.on }}
     name: build-rustdesk-linux-sciter ${{ matrix.job.target }}
@@ -1903,7 +1903,7 @@ jobs:
     name: Build appimage ${{ matrix.job.target }}
     needs: [build-rustdesk-linux]
     runs-on: ubuntu-20.04
-    if: ${{ inputs.linux-build }} == 'true' && ${{ inputs.upload-artifact }} == 'true'
+    if: ${{ inputs.linux-build }}
     strategy:
       fail-fast: false
       matrix:
@@ -1955,7 +1955,7 @@ jobs:
       - build-rustdesk-linux
       - build-rustdesk-linux-sciter
     runs-on: ${{ matrix.job.on }}
-    if: ${{ inputs.linux-build }} == 'true' && ${{ inputs.upload-artifact }} == 'true'
+    if: ${{ inputs.linux-build }}
     strategy:
       fail-fast: false
       matrix:
