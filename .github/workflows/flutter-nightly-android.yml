@@ -1,9 +1,9 @@
 name: Flutter Nightly Build for Android
 
 on:
-  schedule:
+#  schedule:
     # schedule build every night
-    - cron: "0 0 * * *"
+    #- cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     secrets: inherit
     with:
       web-build: false
-      ios-build: flase
+      ios-build: false
       android-build: true
       windows-build: false
       macos-build: false

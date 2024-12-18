@@ -1,7 +1,7 @@
 [package]
 name = "rustdesk"
 version = "1.3.5"
-authors = ["rustdesk <info@rustdesk.com>"]
+authors = ["Ivan Batalin <batalin@ao-nk.ru>"]
 edition = "2021"
 build= "build.rs"
 description = "RustDesk Remote Desktop"
