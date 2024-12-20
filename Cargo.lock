@@ -5328,11 +5328,11 @@ dependencies = [
 
 [[package]]
 name = "reqwest"
-version = "0.11.23"
-source = "git+https://github.com/rustdesk-org/reqwest#9cb758c9fb2f4edc62eb790acfd45a6a3da21ed3"
+version = "0.12.9"
+source = "git+https://github.com/MatinAniss/reqwest-spooftls#6e214133ab45ca2e4de493f13e37bb246d05b71a"
 dependencies = [
  "async-compression",
- "base64 0.21.7",
+ "base64 0.22",
  "bytes",
  "encoding_rs",
  "futures-core",
