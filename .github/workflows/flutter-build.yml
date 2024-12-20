@@ -1373,7 +1373,7 @@ jobs:
               distro: ubuntu18.04,
               on: ubuntu-20.04,
               deb_arch: arm64,
-              vcpkg-triplet: arm64-linux,
+              vcpkg-triplet: aarch64-linux,
             }
     steps:
       - name: Export GitHub Actions cache environment variables
