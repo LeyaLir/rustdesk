@@ -170,7 +170,7 @@ lazy_static::lazy_static! {
 }
 
 const PUBLIC_SERVER: &str = "public";
-const AONK_KEY: &str = "BNQoIY99+xmqsakgb0g4VryS2wRqYwi1RTmEYucWi4w=";
+const AONK_SERVER: &str = "pbx.ao-nk.ru";
 
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
 pub fn get_key_state(key: enigo::Key) -> bool {
