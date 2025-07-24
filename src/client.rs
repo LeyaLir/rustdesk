@@ -170,6 +170,7 @@ lazy_static::lazy_static! {
 }
 
 const PUBLIC_SERVER: &str = "public";
+const AONK_KEY: &str = "BNQoIY99+xmqsakgb0g4VryS2wRqYwi1RTmEYucWi4w=";
 
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
 pub fn get_key_state(key: enigo::Key) -> bool {
@@ -647,7 +648,7 @@ impl Client {
         conn: &mut Stream,
     ) -> ResultType<Option<Vec<u8>>> {
         let rs_pk = get_rs_pk(if key.is_empty() {
-            config::RS_AONK_KEY
+            config::AONK_KEY
         } else {
             key
         });

@@ -1266,7 +1266,7 @@ pub async fn get_key(sync: bool) -> String {
         options.remove("key").unwrap_or_default()
     };
     if key.is_empty() {
-        key = config::RS_AONK_KEY.to_owned();
+        key = config::AONK_KEY.to_owned();
     }
     key
 }
