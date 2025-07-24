@@ -188,6 +188,7 @@ jobs:
 
       - name: Build rustdesk
         run: |
+          printenv
           ./build.py --flutter ${{ matrix.job.extra-build-args }}
 
       - name: create unsigned dmg
