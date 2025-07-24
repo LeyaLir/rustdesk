@@ -271,7 +271,7 @@ impl Client {
                 )
             } else {
                 if other_server == "aonk" {
-                    (check_port(AONK_SERVERS, RENDEZVOUS_PORT), Vec::new(), true)
+                    (check_port(AONK_SERVER, RENDEZVOUS_PORT), Vec::new(), true)
                 } else {
                     (check_port(other_server, RENDEZVOUS_PORT), Vec::new(), true)
                 }
