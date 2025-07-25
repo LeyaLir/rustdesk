@@ -170,7 +170,7 @@ lazy_static::lazy_static! {
 }
 
 const SL_PUBLIC_SERVER: &str = "public";
-const SL_LAONK_SERVER: &str = "aonk";
+const SL_AONK_SERVER: &str = "aonk";
 
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
 pub fn get_key_state(key: enigo::Key) -> bool {
