@@ -1686,7 +1686,7 @@ impl LoginConfigHandler {
                 }
                 let key = args_map.remove("key").unwrap_or_default();
                 key.to_owned()
-            }
+            };
 
             // here we can check <id>/r@server
             let real_id = crate::ui_interface::handle_relay_id(raw_id).to_string();
