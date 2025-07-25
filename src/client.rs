@@ -170,7 +170,7 @@ lazy_static::lazy_static! {
 }
 
 const PUBLIC_SERVER: &str = "public";
-const AONK_SERVER: &str = "pbx.ao-nk.ru";
+const AONK_SERVER: &str = "aonk";
 
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
 pub fn get_key_state(key: enigo::Key) -> bool {
@@ -263,16 +263,16 @@ impl Client {
         } else {
             if other_server == PUBLIC_SERVER {
                 (
-                    check_port(RENDEZVOUS_SERVERS[0], RENDEZVOUS_PORT),
-                    RENDEZVOUS_SERVERS[1..]
+                    check_port(config::PUBLIC_SERVER.read().unwrap(), RENDEZVOUS_PORT),
+                        Vec::new()
                         .iter()
                         .map(|x| x.to_string())
                         .collect(),
                     true,
                 )
             } else {
-                if other_server == "aonk" {
-                    (check_port(AONK_SERVER, RENDEZVOUS_PORT), Vec::new(), true)
+                if other_server == AONK_SERVER {
+                    (check_port(config::AONK_SERVER.read().unwrap(), RENDEZVOUS_PORT), Vec::new(), true)
                 } else {
                     (check_port(other_server, RENDEZVOUS_PORT), Vec::new(), true)
                 }
@@ -1681,16 +1681,20 @@ impl LoginConfigHandler {
             let key = if server == PUBLIC_SERVER {
                 config::RS_PUB_KEY.to_owned()
             } else {
-                let mut args_map: HashMap<String, &str> = HashMap::new();
-                for arg in args.split('&') {
-                    if let Some(kv) = arg.find('=') {
-                        let k = arg[0..kv].to_lowercase();
-                        let v = &arg[kv + 1..];
-                        args_map.insert(k, v);
+                if server == AONK_SERVER {
+                    config::AONK_KEY.to_owned()
+                } else {                
+                    let mut args_map: HashMap<String, &str> = HashMap::new();
+                    for arg in args.split('&') {
+                        if let Some(kv) = arg.find('=') {
+                            let k = arg[0..kv].to_lowercase();
+                            let v = &arg[kv + 1..];
+                            args_map.insert(k, v);
+                        }
                     }
+                    let key = args_map.remove("key").unwrap_or_default();
+                    key.to_owned()
                 }
-                let key = args_map.remove("key").unwrap_or_default();
-                key.to_owned()
             };
 
             // here we can check <id>/r@server
