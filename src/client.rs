@@ -262,10 +262,10 @@ impl Client {
             crate::get_rendezvous_server(1_000).await
         } else {
             if other_server == SL_PUBLIC_SERVER {
-                (check_port(config::PUBLIC_SERVER.read().unwrap(), RENDEZVOUS_PORT), Vec::new(), true)
+                (check_port(config::PUBLIC_SERVER.read().unwrap().as_str(), RENDEZVOUS_PORT), Vec::new(), true)
             } else {
                 if other_server == SL_AONK_SERVER {
-                    (check_port(config::AONK_SERVER.read().unwrap(), RENDEZVOUS_PORT), Vec::new(), true)
+                    (check_port(config::AONK_SERVER.read().unwrap().as_str(), RENDEZVOUS_PORT), Vec::new(), true)
                 } else {
                     (check_port(other_server, RENDEZVOUS_PORT), Vec::new(), true)
                 }
@@ -1671,9 +1671,9 @@ impl LoginConfigHandler {
             let mut server_key = v.next().unwrap_or_default().split('?');
             let server = server_key.next().unwrap_or_default();
             let args = server_key.next().unwrap_or_default();
-            let key = if (server == SL_PUBLIC_SERVER) || (server == config::PUBLIC_SERVER.read().unwrap()) {
+            let key = if (server == SL_PUBLIC_SERVER) || (server == config::PUBLIC_SERVER.read().unwrap().as_str()) {
                 config::RS_PUB_KEY.to_owned()
-            } else if (server == SL_AONK_SERVER) || (server == config::AONK_SERVER.read().unwrap()) {
+            } else if (server == SL_AONK_SERVER) || (server == config::AONK_SERVER.read().unwrap().as_str()) {
                 config::AONK_KEY.to_owned()
             } else {                
                 let mut args_map: HashMap<String, &str> = HashMap::new();
