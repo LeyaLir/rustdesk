@@ -1004,7 +1004,7 @@ fn get_api_server_(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    "https://pbx.ao-nk.ru/api".to_owned()
+    "https://pbx.ao-nk.ru".to_owned()
 }
 
 #[inline]
